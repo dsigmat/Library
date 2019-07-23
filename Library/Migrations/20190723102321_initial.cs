@@ -4,12 +4,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Library.Migrations
 {
-    public partial class Initial : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "LibraryBranchs",
+                name: "LibraryBranches",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -17,13 +17,13 @@ namespace Library.Migrations
                     Name = table.Column<string>(maxLength: 30, nullable: false),
                     Address = table.Column<string>(nullable: false),
                     Telephone = table.Column<string>(nullable: false),
-                    MyPrDescriptionoperty = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(nullable: true),
                     OpenDate = table.Column<DateTime>(nullable: false),
                     ImageUrl = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_LibraryBranchs", x => x.Id);
+                    table.PrimaryKey("PK_LibraryBranches", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -69,9 +69,9 @@ namespace Library.Migrations
                 {
                     table.PrimaryKey("PK_BranchHours", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_BranchHours_LibraryBranchs_BranchId",
+                        name: "FK_BranchHours_LibraryBranches_BranchId",
                         column: x => x.BranchId,
-                        principalTable: "LibraryBranchs",
+                        principalTable: "LibraryBranches",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -94,9 +94,9 @@ namespace Library.Migrations
                 {
                     table.PrimaryKey("PK_Patrons", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Patrons_LibraryBranchs_HomeLibraryBranchId",
+                        name: "FK_Patrons_LibraryBranches_HomeLibraryBranchId",
                         column: x => x.HomeLibraryBranchId,
-                        principalTable: "LibraryBranchs",
+                        principalTable: "LibraryBranches",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
@@ -130,9 +130,9 @@ namespace Library.Migrations
                 {
                     table.PrimaryKey("PK_LibraryAssets", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_LibraryAssets_LibraryBranchs_LocationId",
+                        name: "FK_LibraryAssets_LibraryBranches_LocationId",
                         column: x => x.LocationId,
-                        principalTable: "LibraryBranchs",
+                        principalTable: "LibraryBranches",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -306,7 +306,7 @@ namespace Library.Migrations
                 name: "LibraryCards");
 
             migrationBuilder.DropTable(
-                name: "LibraryBranchs");
+                name: "LibraryBranches");
 
             migrationBuilder.DropTable(
                 name: "Statuses");

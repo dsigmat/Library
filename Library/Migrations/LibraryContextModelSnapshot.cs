@@ -152,9 +152,9 @@ namespace Library.Migrations
                     b.Property<string>("Address")
                         .IsRequired();
 
-                    b.Property<string>("ImageUrl");
+                    b.Property<string>("Description");
 
-                    b.Property<string>("MyPrDescriptionoperty");
+                    b.Property<string>("ImageUrl");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -167,7 +167,7 @@ namespace Library.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("LibraryBranchs");
+                    b.ToTable("LibraryBranches");
                 });
 
             modelBuilder.Entity("Library.Models.LibraryCard", b =>

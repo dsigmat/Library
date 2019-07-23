@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Library.Migrations
 {
     [DbContext(typeof(LibraryContext))]
-    [Migration("20190722103955_Initial")]
-    partial class Initial
+    [Migration("20190723102321_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -154,9 +154,9 @@ namespace Library.Migrations
                     b.Property<string>("Address")
                         .IsRequired();
 
-                    b.Property<string>("ImageUrl");
+                    b.Property<string>("Description");
 
-                    b.Property<string>("MyPrDescriptionoperty");
+                    b.Property<string>("ImageUrl");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -169,7 +169,7 @@ namespace Library.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("LibraryBranchs");
+                    b.ToTable("LibraryBranches");
                 });
 
             modelBuilder.Entity("Library.Models.LibraryCard", b =>
