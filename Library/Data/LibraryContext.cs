@@ -16,7 +16,7 @@ namespace Library.Models
         public DbSet<Library.Models.Book> Books { get; set; }
         public DbSet<Library.Models.Video> Videos { get; set; }
         public DbSet<Library.Models.Checkout> Checkouts { get; set; }
-        public DbSet<Library.Models.CheckoutHistory> CheckoutHistorys { get; set; }
+        public DbSet<Library.Models.CheckoutHistory> CheckoutHistories { get; set; }
         public DbSet<Library.Models.LibraryBranch> LibraryBranches { get; set; }
         public DbSet<Library.Models.BranchHours> BranchHours { get; set; }
         public DbSet<Library.Models.LibraryCard> LibraryCards { get; set; }

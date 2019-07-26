@@ -1,0 +1,74 @@
+﻿@model Library.Models.Catalog.AssetDetailModel
+
+<div class="container">
+    <div class="page-header clearfix detailHeading" >
+        <h2 class="text-muted text-center">View LibraryItem</h2>
+    </div>
+</div>
+
+<div class="jumbotron">
+    <div class="row">
+        <div class="col-md-4">
+            <div>
+                <img src="@Model.ImageUrl" class="detailImage" width="250px" />
+            </div>
+        </div>
+        <div class="col-md-4">
+            <p id="itemTitle">@Model.Title</p>
+            <p id="itemAuthor">@Model.AuthorOrDirector</p>
+            <p id="itemStatus">@Model.Status</p>
+            <p id="itemType">@Model.Type</p>
+            <p id="itemLocation">@Model.CurrentLocation</p>
+
+            @if (Model.Status == "Lost")
+            {
+                <p>This item has been lost.It cannot be checked out.</p>
+                <p>
+                    <a class="btn btn-lg btn-outline-danger" role="button" asp-controller="Catalog" ap-action="MarkFound"
+                       asp-route-id="@Model.AssetId">Mark Item Found</a>
+                </p>
+
+            }
+
+            @if (Model.Status == "Checked Out")
+            {
+                <p id="itemPatron">Checked Out By: @Model.PatronName</p>
+
+                <p>
+                    <a class="btn btn-lg btn-outline-success" role="button" asp-controller="Catalog" ap-action="CheckIn"
+                       asp-route-id="@Model.AssetId">Check In</a>
+                </p>
+
+                <p>
+                    <a class="btn btn-lg btn-outline-warning" role="button" asp-controller="Catalog" ap-action="Hold"
+                       asp-route-id="@Model.AssetId">Place Hold</a>
+                </p>
+
+            }
+
+            @if (Model.Status == "Available")
+            {
+                <p><a class="btn btn-lg btn-outline-info" role="button" asp-controller="Catalog" ap-action="Checkout" asp-route-id="@Model.AssetId">Check Out</a></p>
+
+            }
+        </div>
+        <div class="col-md-4 detailInfo">
+            <div>
+                <table>
+                    <tr>
+                        <td class="itemLabel">ISBN: </td>
+                        <td class="itemValue">@Model.ISBN </td>
+                    </tr>
+                    <tr>
+                        <td class="itemLabel">Call: </td>
+                        <td class="itemValue">@Model.DeweyCallNumber</td>
+                    </tr>
+                    <tr>
+                        <td class="itemLabel">Replacement Cost: </td>
+                        <td class="itemValue">@Model.Cost </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
