@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Library.Controllers.Checkout;
+
 using Library.Interfaces;
 using Library.Models.Catalog;
+using Library.Models.CheckoutModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Library.Controllers
@@ -74,6 +75,7 @@ namespace Library.Controllers
         public IActionResult Checkout(int id)
         {
             var asset = _assets.GetById(id);
+
             var model = new CheckoutModel
             {
                 AssetId = id,
